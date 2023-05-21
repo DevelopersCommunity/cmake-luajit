@@ -51,6 +51,8 @@ install(FILES ${LUAJIT_SRC}/lauxlib.h  ${LUAJIT_SRC}/lua.h  ${LUAJIT_SRC}/lua.hp
 
 install(DIRECTORY ${LUAJIT_JIT} DESTINATION bin/lua
   FILES_MATCHING PATTERN *.lua)
+install(FILES ${CMAKE_CURRENT_LIST_DIR}/config.lua
+  DESTINATION etc/luarocks)
 install(FILES ${LUAJIT_SRC}/../COPYRIGHT TYPE DOC)
 
 set(CPACK_GENERATOR ZIP WIX)

@@ -9,6 +9,14 @@
       Part='last'
       Value='[INSTALL_ROOT]bin'
     />
+    <Environment
+      Id='UpdateConfig'
+      Name='LUAROCKS_CONFIG'
+      Action='set'
+      Permanent='no'
+      Part='last'
+      Value='[INSTALL_ROOT]etc\luarocks\config.lua'
+    />
   </CPackWiXFragment>
 
   <!-- Allow installation by non-administrative users -->
