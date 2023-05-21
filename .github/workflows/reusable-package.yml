@@ -11,24 +11,7 @@ jobs:
           submodules: 'true'
       - name: Package
         shell: pwsh
-        run: |
-          function Start-VsDevCmd {
-            $installationPath = (
-                & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" `
-                    -prerelease -latest -property installationPath)
-            $vsdevcmd = Join-Path `
-                -Path "$installationPath" `
-                -ChildPath Common7\Tools\VsDevCmd.bat `
-                -Resolve
-            & "${env:COMSPEC}" /s /c "`"$vsdevcmd`" -no_logo -arch=amd64 && set" |
-                ForEach-Object {
-                  $name, $value = $_ -split '=', 2
-                  Set-Content env:\"$name" $value
-                }
-          }
-          Start-VsDevCmd
-          cmake -B build -G Ninja -D CMAKE_C_COMPILER=cl
-          cmake --build build --target package
+        run: ./Build-LuaJIT.ps1
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
