@@ -3,6 +3,14 @@
 This is a CMake-based project to package [LuaJIT](https://luajit.org/) and
 [LuaRocks](https://luarocks.org/).
 
+You can install this package with
+[`winget`](https://learn.microsoft.com/windows/package-manager/winget/).
+
+```powershell
+winget install --id DEVCOM.LuaJIT
+
+```
+
 ## Build prerequisites
 
 - [Microsoft Visual
@@ -10,8 +18,7 @@ This is a CMake-based project to package [LuaJIT](https://luajit.org/) and
 - [CMake](https://cmake.org/)
 - [WiX v3](https://wixtoolset.org/docs/wix3/)
 
-You can install the first two components with the following
-[winget](https://learn.microsoft.com/windows/package-manager/winget/) commands:
+You can install the first two components with the following `winget` commands:
 
 ```powershell
 winget install --id Microsoft.VisualStudio.2022.Community
