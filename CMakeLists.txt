@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.26)
 if(!WIN32)
   message(FATAL_ERROR "This is a Windows only project")
 endif()
-set(LUAJIT_VERSION 2.1)
+set(LUAJIT_VERSION 2.1.0.3)
 project(LuaJIT
   VERSION ${LUAJIT_VERSION}
   DESCRIPTION "LuaJIT and LuaRocks packaged by DEVCOM"
