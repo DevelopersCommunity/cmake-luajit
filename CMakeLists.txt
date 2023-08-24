@@ -2,7 +2,16 @@ cmake_minimum_required(VERSION 3.26)
 if(!WIN32)
   message(FATAL_ERROR "This is a Windows only project")
 endif()
-set(LUAJIT_VERSION 2.1.0.3)
+execute_process(COMMAND git show -s --format=%ct
+  WORKING_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/LuaJIT
+  OUTPUT_VARIABLE LUAJIT_COMMIT_TIME
+  OUTPUT_STRIP_TRAILING_WHITESPACE)
+
+# Convert LuaJIT build from seconds to days
+# because MSI build version maximum value is 65535.
+math(EXPR VERSION_PATCH "${LUAJIT_COMMIT_TIME} / 60 / 60 / 24")
+
+string(CONCAT LUAJIT_VERSION "2.1." ${VERSION_PATCH})
 project(LuaJIT
   VERSION ${LUAJIT_VERSION}
   DESCRIPTION "LuaJIT and LuaRocks packaged by DEVCOM"
