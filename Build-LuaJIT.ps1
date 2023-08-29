@@ -15,7 +15,11 @@ function Start-VsDevCmd
             Set-Content env:\"$name" $value
         }
 }
-Start-VsDevCmd
+
+if (-Not (Get-Command "cl" -ErrorAction "SilentlyContinue"))
+{
+    Start-VsDevCmd
+}
 if (Test-Path -Path build -PathType Container)
 {
     Remove-Item -Recurse -Force -Path build
