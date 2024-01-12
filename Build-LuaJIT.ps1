@@ -1,5 +1,6 @@
 $ErrorActionPreference = 'Stop'
 
+# https://github.com/microsoft/vswhere/wiki/Start-Developer-Command-Prompt#using-powershell
 function Start-VsDevCmd
 {
     $installationPath = (
