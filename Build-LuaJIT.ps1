@@ -13,7 +13,8 @@ function Start-VsDevCmd
     & "${env:COMSPEC}" /s /c "`"$vsdevcmd`" -no_logo -arch=amd64 && set" |
         ForEach-Object {
             $name, $value = $_ -split '=', 2
-            Set-Content env:\"$name" $value
+            # Set-Content env:\"$name" $value
+            Set-Item -Path env:\"$name" -Value $value
         }
 }
 
