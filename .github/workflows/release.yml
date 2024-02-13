@@ -9,19 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           submodules: 'true'
       - name: Download artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
       - name: Create release
         run: |
           cd LuaJIT || exit 1
-          git checkout v2.1
-          COMMIT_TIME=$(git show -s --format=%ct)
-          DAYS=$((COMMIT_TIME / 60 / 60 / 24))
-          TAG="v2.1.${DAYS}"
+          VERSION="2.1"
+          git checkout v${VERSION}
+          COMMIT_TIME_SECONDS=$(git show -s --format=%ct)
+          COMMIT_TIME_DAYS=$((COMMIT_TIME / 60 / 60 / 24))
           cd .. || exit 2
-          gh release create "${TAG}" --notes "LuaJIT ${TAG}" ./build/*.msi ./build/*.zip
+          gh release create "v${VERSION}.${COMMIT_TIME_DAYS}" --notes "LuaJIT ${VERSION}.${COMMIT_TIME_SECONDS}" ./build/*.msi ./build/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
