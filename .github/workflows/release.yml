@@ -16,11 +16,12 @@ jobs:
         uses: actions/download-artifact@v3
       - name: Create release
         run: |
-          cd LuaJIT
+          cd LuaJIT || exit 1
           git checkout v2.1
           COMMIT_TIME=$(git show -s --format=%ct)
-          TAG="v2.1.${COMMIT_TIME}"
-          cd .. || exit 1
+          DAYS=$((COMMIT_TIME / 60 / 60 / 24))
+          TAG="v2.1.${DAYS}"
+          cd .. || exit 2
           gh release create "${TAG}" --notes "LuaJIT ${TAG}" ./build/*.msi ./build/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
