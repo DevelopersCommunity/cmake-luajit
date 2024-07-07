@@ -26,7 +26,7 @@ find_program(MSVC cl)
 if(MSVC STREQUAL "MSVC-NOTFOUND")
   message(FATAL_ERROR "MSVC compiler not found")
 endif()
-set(LUAROCKS_VERSION 3.9.2)
+set(LUAROCKS_VERSION 3.11.1)
 set(LUAROCKS_TARBALL luarocks-${LUAROCKS_VERSION}-windows-64.zip)
 
 if(NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/${LUAROCKS_TARBALL})

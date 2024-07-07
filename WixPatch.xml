@@ -7,7 +7,21 @@
       Action='set'
       Permanent='no'
       Part='last'
-      Value='[INSTALL_ROOT]bin'
+      Value='[INSTALL_ROOT]bin;[AppDataFolder]luarocks\bin'
+    />
+    <Environment
+      Id='CreateLuaPath'
+      Name='LUA_PATH'
+      Action='create'
+      Permanent='no'
+      Value='[INSTALL_ROOT]bin\lua\?.lua;[INSTALL_ROOT]bin\lua\?\init.lua;[INSTALL_ROOT]bin\?.lua;[INSTALL_ROOT]bin\?\init.lua;[INSTALL_ROOT]bin\..\share\lua\5.1\?.lua;[INSTALL_ROOT]bin\..\share\lua\5.1\?\init.lua;.\?.lua;.\?\init.lua;[AppDataFolder]luarocks\share\lua\5.1\?.lua;[AppDataFolder]luarocks\share\lua\5.1\?\init.lua'
+    />
+    <Environment
+      Id='CreateLuaCPath'
+      Name='LUA_CPATH'
+      Action='create'
+      Permanent='no'
+      Value='[INSTALL_ROOT]bin\?.dll;[INSTALL_ROOT]bin\..\lib\lua\5.1\?.dll;[INSTALL_ROOT]bin\loadall.dll;.\?.dll;[AppDataFolder]luarocks\lib\lua\5.1\?.dll'
     />
     <Environment
       Id='UpdateConfig'
